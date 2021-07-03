@@ -1,6 +1,6 @@
 # ETL on Spotify Data
 
-This project demonstrates how to build a data pipeline that extracts data about what music a spotify user listened to in the last 24 hours and loads the data into a database.
+This project demonstrates how to build a data pipeline that extracts data about what music a spotify user listened to
 
 ## Environment Variables
 
