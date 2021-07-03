@@ -3,14 +3,14 @@ import requests
 import json
 import pandas as pd
 import datetime
-from datetime import datetime
+# from datetime import datetime
 from decouple import config
 import sqlite3
-from sqlalchemy.orm import sessionmaker
-import sqlalchemy
+# from sqlalchemy.orm import sessionmaker
+# import sqlalchemy
 
 
-DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
+# DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
 
 def data_validation(df):
     #check if the data frame is empty
@@ -50,7 +50,7 @@ headers = {
 today = datetime.datetime.now()
 print("today:",today)
 #getting yesterday's date
-yesterday = today - datetime.timedelta(days=1)
+yesterday = today - datetime.timedelta(days=30)
 print("yesterday",yesterday)
 #converting yesterday's date to unix time stamp
 yesterday_unix_timestamp = int(yesterday.timestamp()) * 1000
@@ -88,28 +88,28 @@ if data_validation(songs_df):
 
 # Loading
 
-engine = sqlalchemy.create_engine(DATABASE_LOCATION)
-conn = sqlite3.connect('my_played_tracks.sqlite')
-cursor = conn.cursor()
+# engine = sqlalchemy.create_engine(DATABASE_LOCATION)
+# conn = sqlite3.connect('my_played_tracks.sqlite')
+# cursor = conn.cursor()
 
-sql_query = """
-CREATE TABLE IF NOT EXISTS my_played_tracks(
-    song_name VARCHAR(200),
-    artist_name VARCHAR(200),
-    played_at VARCHAR(200),
-    timestamp VARCHAR(200),
-    CONSTRAINT primary_key_constraint PRIMARY KEY (played_at)
-)
-"""
+# sql_query = """
+# CREATE TABLE IF NOT EXISTS my_played_tracks(
+#     song_name VARCHAR(200),
+#     artist_name VARCHAR(200),
+#     played_at VARCHAR(200),
+#     timestamp VARCHAR(200),
+#     CONSTRAINT primary_key_constraint PRIMARY KEY (played_at)
+# )
+# """
 
-cursor.execute(sql_query)
-print("Opened database successfully")
+# cursor.execute(sql_query)
+# print("Opened database successfully")
 
-try:
-    song_df.to_sql("my_played_tracks", engine, index=False, if_exists='append')
-except:
-    print("Data already exists in the database")
+# try:
+#     song_df.to_sql("my_played_tracks", engine, index=False, if_exists='append')
+# except:
+#     print("Data already exists in the database")
 
-conn.close()
-print("Close database successfully")
+# conn.close()
+# print("Close database successfully")
     
