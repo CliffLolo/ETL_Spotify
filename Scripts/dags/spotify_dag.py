@@ -3,13 +3,12 @@ from datetime import timedelta
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
-
 from etl import run_etl
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2021, 7, 8),
+    'start_date': datetime.datetime(2021, 7, 8),
     'email': ['cliffordfrimpong69@gmail.com'],
     'email_on_failure': False,
     'email_on_retry': False,

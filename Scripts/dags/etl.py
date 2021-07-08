@@ -27,17 +27,6 @@ def data_validation(df):
     
     return True
 
-#function to calculate the frequencies and draw graphs
-def frequencies(column_name):
-    
-    print(Counter(songs_df[column_name].values))
-    print(dict(Counter(songs_df[column_name].values).most_common(5)))
-    
-    bar_plot = dict(Counter(songs_df[column_name].values).most_common(5))
-    
-    plt.bar(*zip(*bar_plot.items()))
-    plt.show()
-
 def run_etl():
     headers = {
         "Accept": "application/json",
@@ -113,9 +102,10 @@ def run_etl():
     """)
     print("Table created successfully")
 
-    conn.close()
-
     try:
         songs_df.to_sql('my_songs',engine,index=False, if_exists='append')
     except:
         print("Ooops! Data already exists in the database ")
+
+    conn.close()
+    print("Database Closed!")
