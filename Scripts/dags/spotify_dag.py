@@ -27,7 +27,7 @@ dag = DAG(
 
 run_etl = PythonOperator(
     task_id='final_spotify_etl',
-    python_callable=run_spotify_etl,
+    python_callable=run_etl,
     dag=dag,
 )
 
