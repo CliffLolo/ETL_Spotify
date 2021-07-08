@@ -4,6 +4,8 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 
+from etl import run_etl
+
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
