@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker
 import sqlalchemy
 
 
-DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
+DATABASE_LOCATION = "sqlite:///my_songs.sqlite"
 
 def data_validation(df):
     #check if the data frame is empty
